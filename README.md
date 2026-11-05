@@ -25,6 +25,10 @@ This repository collects the resources and instructions you need to contribute d
 
 ## Resources
 
+<!-- ### Zoom link
+
+To join online please us [this](https://rediris.zoom.us/j/93810366052?pwd=bQpoUxa0lmu2YxH5Vtca9PnyaZ37Wy.1) link. -->
+
 ### Project
 
 | Resource | Description |
