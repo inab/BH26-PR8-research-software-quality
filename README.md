@@ -256,7 +256,7 @@ Push your branch to your fork and open a pull request against `main` in `EVERSE-
 
 <!--
 TODO: Should we maybe put the comment below as a first thing to do?
-??? If the tool is not in the TechRadar yet, it also needs to be registered there. Ask in the [Slack channel](https://biohackeu.slack.com/archives/C0BBMFB0XEY) how to do it.
+??? If the tool is not in the TechRadar yet, it also needs to be registered there. The plugin identifies the tool by its TechRadar `@id` (the plugin's `id` attribute), so without a TechRadar entry the results of the plugin can't be pushed to the TechRadar. This is the case of Semgrep, the tool used as an example above. Ask in the [Slack channel](https://biohackeu.slack.com/archives/C0BBMFB0XEY) how to do it.
 -->
 
 
