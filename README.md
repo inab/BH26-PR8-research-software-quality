@@ -202,26 +202,24 @@ During the hackathon we don't work directly on the official `resqui` repository.
    *Example:* "[Add a Semgrep plugin for `no_critical_vulnerability`](https://github.com/inab/ELIXIR-BH2026-RESQUI/issues/1)".
 
 
-### 2. Fork and set up `resqui`
+### 2. Clone and set up `resqui`
 
-Fork the hackathon repository [inab/ELIXIR-BH2026-RESQUI](https://github.com/inab/ELIXIR-BH2026-RESQUI) on GitHub. When forking, untick *Copy the `main` branch only*, so your fork also gets the tool branches. Then clone your fork and switch to the branch of your tool:
+You work directly on the branch of your tool in the hackathon repository, without forking it. To push to it you need write access: ask in the [Slack channel](https://biohackeu.slack.com/archives/C0BBMFB0XEY), giving your GitHub username. Then clone the repository and switch to the branch of your tool:
 
 ```bash
-git clone git@github.com:<your-user>/ELIXIR-BH2026-RESQUI.git
+git clone git@github.com:inab/ELIXIR-BH2026-RESQUI.git
 cd ELIXIR-BH2026-RESQUI
-git remote add upstream https://github.com/inab/ELIXIR-BH2026-RESQUI.git
-git fetch upstream
-git checkout -b semgrep upstream/semgrep
+git checkout semgrep
 ```
 
-If several people work on the same tool, pull often (`git pull upstream semgrep`) to pick up each other's changes.
+If several people work on the same tool, pull often (`git pull origin semgrep`) to pick up each other's changes.
 
-Create a virtual environment, install `resqui` in development mode and run the tests, as described in the [contributing guidelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines/blob/main/CONTRIBUTING.md#local-setup) (Python 3.9+, and Docker for plugins that use Docker images):
+Create a virtual environment, install `resqui` in development mode and run the tests, as described in the [contributing guidelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines/blob/main/CONTRIBUTING.md#local-setup) (Python 3.9+, and Docker for plugins that use Docker images). This environment is needed to run and test your plugin in [step 4](#4-check-it-works). Activate it again in every new terminal with `source venv/bin/activate`.
 
 ```bash
 make install-dev          # creates venv/ and installs resqui with dev dependencies
-source venv/bin/activate  # needed for the resqui commands in step 4
-make test
+source venv/bin/activate  # activates the environment
+make test                 # checks the setup works before you change anything
 ```
 
 
@@ -260,15 +258,16 @@ make test
 ```
 
 
-### 5. Open a pull request
+### 5. Push your changes
 
-Push your branch to your fork:
+Commit your changes, referencing the issue you opened in step 1 in the commit message (e.g. `Add Semgrep plugin (#1)`), and push them to the branch of your tool (never to `main`). Pull first so you have your teammates' latest changes:
 
 ```bash
+git pull origin semgrep
 git push origin semgrep
 ```
 
-Then open a pull request in [inab/ELIXIR-BH2026-RESQUI](https://github.com/inab/ELIXIR-BH2026-RESQUI/pulls) from your fork's `semgrep` branch into the `semgrep` branch of the hackathon repository (not `main`), linking the issue you opened in step 1. Follow the [contributing guidelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines/blob/main/CONTRIBUTING.md).
+Follow the [contributing guidelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines/blob/main/CONTRIBUTING.md).
 
 Once a plugin is finished in the hackathon repository, it can be proposed to the official [`resqui` repository](https://github.com/EVERSE-ResearchSoftware/QualityPipelines).
 
