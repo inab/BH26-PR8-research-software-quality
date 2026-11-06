@@ -192,16 +192,14 @@ During the hackathon we don't work directly on the official `resqui` repository.
 | [`semgrep`](https://github.com/inab/ELIXIR-BH2026-RESQUI/tree/semgrep) | [Semgrep](https://semgrep.dev/) |
 | [`scancode-toolkit`](https://github.com/inab/ELIXIR-BH2026-RESQUI/tree/scancode-toolkit) | [ScanCode Toolkit](https://github.com/aboutcode-org/scancode-toolkit) |
 
-Issues and pull requests go to this repository, so the official one isn't flooded with work in progress.
-
 ### 1. Pick and claim a candidate
 
 1. Choose a tool and indicator from the [candidates](#candidate-tools-and-indicators), and check it's not in the [work already in progress](#work-already-in-progress).
-   *Example:* Semgrep is not yet a `resqui` plugin, and `no_critical_vulnerability` is listed as not implemented in the `resqui` configuration for research software infrastructure.
-2. Open an issue in the [hackathon repository](https://github.com/inab/ELIXIR-BH2026-RESQUI/issues) with the [plugin or indicator request](https://github.com/inab/ELIXIR-BH2026-RESQUI/issues/new?template=plugin_or_indicator_request.yml) template, or comment on an existing one, so others know you're working on it. If your tool doesn't have a branch yet, ask in the [Slack channel](https://biohackeu.slack.com/archives/C0BBMFB0XEY) to have one created.
-   *Example:* "Add a Semgrep plugin for `no_critical_vulnerability`".
-3. Check that the indicator is in the [EVERSE indicators catalogue](https://everse.software/indicators/website/indicators.html) and use its exact identifier. `resqui` only accepts indicators defined there. If yours is missing, it has to be proposed to EVERSE first.
+   *Example:* `no_critical_vulnerability` is already measured by the OpenSSF Scorecard plugin, which looks for known vulnerabilities in the project's dependencies. Semgrep adds a different approach: it scans the project's own source code for vulnerable patterns. An indicator can be measured by more than one tool, so this is not duplicated work.
+2. Check that the indicator is in the [EVERSE indicators catalogue](https://everse.software/indicators/website/indicators.html) and note its exact identifier and `@id`, as you'll need them for the issue. `resqui` only accepts indicators defined there. If yours is missing, it has to be proposed to EVERSE first.
    *Example:* the identifier is `no_critical_vulnerability`, and its `@id` is `https://w3id.org/everse/i/indicators/no_critical_vulnerability`.
+3. Open an issue in the [hackathon repository](https://github.com/inab/ELIXIR-BH2026-RESQUI/issues) with the [plugin or indicator request](https://github.com/inab/ELIXIR-BH2026-RESQUI/issues/new?template=plugin_or_indicator_request.yml) template, or comment on an existing one, so others know you're working on it. If your tool doesn't have a branch yet, ask in the [Slack channel](https://biohackeu.slack.com/archives/C0BBMFB0XEY) to have one created.
+   *Example:* "[Add a Semgrep plugin for `no_critical_vulnerability`](https://github.com/inab/ELIXIR-BH2026-RESQUI/issues/1)".
 
 
 ### 2. Fork and set up `resqui`
