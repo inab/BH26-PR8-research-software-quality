@@ -183,23 +183,27 @@ See also the issue [#51 "list of next plugins"](https://github.com/EVERSE-Resear
 
 ## Contributing to resqui during the hackathon
 
+The steps below use as example [Semgrep](https://semgrep.dev/), a static analysis tool, to check the indicator [`no_critical_vulnerability`](https://w3id.org/everse/i/indicators/no_critical_vulnerability) (*No critical vulnerabilities*, crucial for research software infrastructure). Replace Semgrep and the indicator with the tool and indicator you pick.
 
 ### 1. Pick and claim a candidate
 
 1. Choose a tool and indicator from the [candidates](#candidate-tools-and-indicators), and check it's not in the [work already in progress](#work-already-in-progress).
+   *Example:* Semgrep is not yet a `resqui` plugin, and `no_critical_vulnerability` is listed as not implemented in the `resqui` configuration for research software infrastructure.
 2. Open an issue in `resqui` with the [plugin or indicator request](https://github.com/EVERSE-ResearchSoftware/QualityPipelines/issues/new?template=plugin_or_indicator_request.yml) template, or comment on an existing one, so others know you're working on it.
-3. Check that the indicator is in the [EVERSE indicators catalogue](https://everse.software/indicators/website/indicators.html) and use its exact identifier (for example `software_has_license`). `resqui` only accepts indicators defined there. If yours is missing, it has to be proposed to EVERSE first.
- 
+   *Example:* "Add a Semgrep plugin for `no_critical_vulnerability`".
+3. Check that the indicator is in the [EVERSE indicators catalogue](https://everse.software/indicators/website/indicators.html) and use its exact identifier. `resqui` only accepts indicators defined there. If yours is missing, it has to be proposed to EVERSE first.
+   *Example:* the identifier is `no_critical_vulnerability`, and its `@id` is `https://w3id.org/everse/i/indicators/no_critical_vulnerability`.
+
 
 ### 2. Fork and set up `resqui`
 
-Fork [EVERSE-ResearchSoftware/QualityPipelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines) on GitHub, then clone your fork and create a branch from `main`:
+Fork [EVERSE-ResearchSoftware/QualityPipelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines) on GitHub, then clone your fork and create a branch from `main`, named after your tool:
 
 ```bash
 git clone git@github.com:<your-user>/QualityPipelines.git
 cd QualityPipelines
 git remote add upstream https://github.com/EVERSE-ResearchSoftware/QualityPipelines.git
-git checkout -b plugin/<tool-name>
+git checkout -b plugin/semgrep
 ```
 
 Create a virtual environment, install `resqui` in development mode and run the tests, as described in the [contributing guidelines](https://github.com/EVERSE-ResearchSoftware/QualityPipelines/blob/main/CONTRIBUTING.md#local-setup) (Python 3.9+, and Docker for plugins that use Docker images):
@@ -217,7 +221,7 @@ The [Add an Indicator Plugin](https://everse.software/QualityPipelines/how-to/ad
 
 **What every plugin has**
 
-1. A file `src/resqui/plugins/<tool-name>.py` with a class that subclasses `IndicatorPlugin`.
+1. A file named after the tool (for example `src/resqui/plugins/semgrep.py`) with a class that subclasses `IndicatorPlugin`.
 2. The attributes `name`, `version`, `id` (the tool's TechRadar `@id`) and `indicators` (the EVERSE indicator identifiers it checks).
 3. One method per indicator, named after the indicator, that runs the tool and returns a `CheckResult`.
 
@@ -240,7 +244,7 @@ In `__init__`, create an executor that matches how the tool is distributed:
 ### 4. Check it works
 
 ```bash
-resqui indicators                                   # your plugin and indicators should be listed
+resqui indicators                                   # your plugin and indicators (e.g. no_critical_vulnerability) should be listed
 resqui -c <your-config>.json -u <repo-url> -t $GITHUB_TOKEN -o test.json
 make test
 ```
