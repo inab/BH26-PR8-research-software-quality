@@ -185,7 +185,7 @@ See also the issue [#51 "list of next plugins"](https://github.com/EVERSE-Resear
 
 The steps below use as example [Semgrep](https://semgrep.dev/), a static analysis tool, to check the indicator [`no_critical_vulnerability`](https://w3id.org/everse/i/indicators/no_critical_vulnerability) (*No critical vulnerabilities*, crucial for research software infrastructure). Replace Semgrep and the indicator with the tool and indicator you pick.
 
-During the hackathon we don't work directly on the official `resqui` repository. Instead, we use a hackathon copy of it, [inab/ELIXIR-BH2026-RESQUI](https://github.com/inab/ELIXIR-BH2026-RESQUI), kept in sync with the official `main`. It has one branch per tool being worked on:
+During the hackathon we don't work directly on the official `resqui` repository. Instead, we use a hackathon copy of it (fork), [inab/ELIXIR-BH2026-RESQUI](https://github.com/inab/ELIXIR-BH2026-RESQUI), kept in sync with the official `main`. It has one branch per tool being worked on:
 
 | Branch | Tool |
 |---|---|
